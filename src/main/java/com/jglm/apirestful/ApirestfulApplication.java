@@ -5,185 +5,126 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.jglm.apirestful.model.Categoria;
-import com.jglm.apirestful.model.Produto;
-import com.jglm.apirestful.repository.CategoriaRepository;
-import com.jglm.apirestful.repository.ProdutoRepository;
+import com.jglm.apirestful.model.Aluno;
+import com.jglm.apirestful.model.Professor;
+import com.jglm.apirestful.model.Turma;
+import com.jglm.apirestful.model.Inscricao;
+import com.jglm.apirestful.repository.AlunoRepository;
+import com.jglm.apirestful.repository.ProfessorRepository;
+import com.jglm.apirestful.repository.TurmaRepository;
+import com.jglm.apirestful.repository.InscricaoRepository;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @SpringBootApplication
 public class ApirestfulApplication implements CommandLineRunner {
 
-    private final ProdutoRepository produtoRepository;
-    private final CategoriaRepository categoriaRepository;
+        private final AlunoRepository alunoRepository;
+        private final ProfessorRepository professorRepository;
+        private final TurmaRepository turmaRepository;
+        private final InscricaoRepository inscricaoRepository;
 
-    // public ApirestfulApplication(ProdutoRepository produtoRepository,
-    // CategoriaRepository categoriaRepository) {
-    // this.produtoRepository = produtoRepository;
-    // this.categoriaRepository = categoriaRepository;
-    // }
+        // Construtor comentado removido para usar @RequiredArgsConstructor
 
-    public static void main(String[] args) {
-        SpringApplication.run(ApirestfulApplication.class, args);
-    }
+        public static void main(String[] args) {
+                SpringApplication.run(ApirestfulApplication.class, args);
+        }
 
-    @Override
-    public void run(String... args) throws Exception {
+        @Override
+        public void run(String... args) throws Exception {
 
-        Categoria fruta = new Categoria("Fruta", "fruta");
-        categoriaRepository.save(fruta);
+                // Criar professores
+                Professor prof1 = new Professor();
+                prof1.setNome("Dr. João Silva");
+                prof1.setEmail("joao.silva@uff.br");
+                professorRepository.save(prof1);
 
-        Categoria legume = new Categoria("Legume", "legume");
-        categoriaRepository.save(legume);
+                Professor prof2 = new Professor();
+                prof2.setNome("Dra. Maria Santos");
+                prof2.setEmail("maria.santos@uff.br");
+                professorRepository.save(prof2);
 
-        Categoria verdura = new Categoria("Verdura", "verdura");
-        categoriaRepository.save(verdura);
+                Professor prof3 = new Professor();
+                prof3.setNome("Dr. Carlos Oliveira");
+                prof3.setEmail("carlos.oliveira@uff.br");
+                professorRepository.save(prof3);
 
-        Produto produto = new Produto(
-                "abacate.png",
-                "Abacate",
-                "abacate",
-                "1 unidade aprox. 750g",
-                true,
-                100,
-                BigDecimal.valueOf(2.45),
-                LocalDate.of(2023, 4, 26),
-                fruta);
-        produtoRepository.save(produto);
+                // Criar alunos
+                Aluno aluno1 = new Aluno();
+                aluno1.setNome("Pedro Marinho");
+                aluno1.setEmail("pedro.marinho@id.uff.br");
+                alunoRepository.save(aluno1);
 
-        produto = new Produto(
-                "abobrinha.png",
-                "Abobrinha",
-                "abobrinha",
-                "1 unidade aprox. 250g",
-                false,
-                500,
-                BigDecimal.valueOf(1.1),
-                LocalDate.of(2023, 5, 22),
-                legume);
-        produtoRepository.save(produto);
+                Aluno aluno2 = new Aluno();
+                aluno2.setNome("Ana Costa");
+                aluno2.setEmail("ana.costa@id.uff.br");
+                alunoRepository.save(aluno2);
 
-        produto = new Produto(
-                "abobora.png",
-                "Abóbora",
-                "abobora",
-                "1 unidade aprox. 1,9kg",
-                true,
-                400,
-                BigDecimal.valueOf(4.7),
-                LocalDate.of(2023, 3, 24),
-                legume);
-        produtoRepository.save(produto);
+                Aluno aluno3 = new Aluno();
+                aluno3.setNome("Lucas Ferreira");
+                aluno3.setEmail("lucas.ferreira@id.uff.br");
+                alunoRepository.save(aluno3);
 
-        produto = new Produto(
-                "acelga.png",
-                "Acelga",
-                "acelga",
-                "1 maço de aprox. 400g",
-                true,
-                120,
-                BigDecimal.valueOf(4.99),
-                LocalDate.of(2023, 3, 12),
-                verdura);
-        produtoRepository.save(produto);
+                Aluno aluno4 = new Aluno();
+                aluno4.setNome("Carla Rodrigues");
+                aluno4.setEmail("carla.rodrigues@id.uff.br");
+                alunoRepository.save(aluno4);
 
-        produto = new Produto(
-                "agriao.png",
-                "Agrião",
-                "agriao",
-                "1 maço de aprox. 200g",
-                true,
-                340,
-                BigDecimal.valueOf(2.5),
-                LocalDate.of(2023, 5, 17),
-                verdura);
-        produtoRepository.save(produto);
+                // Criar turmas
+                Turma turma1 = new Turma();
+                turma1.setAno("2024");
+                turma1.setPeriodo("2024.1");
+                turma1.setProfessor(prof1);
+                turmaRepository.save(turma1);
 
-        produto = new Produto(
-                "alface.png",
-                "Alface",
-                "alface",
-                "1 maço de aprox. 200g",
-                true,
-                220,
-                BigDecimal.valueOf(4.99),
-                LocalDate.of(2023, 5, 14),
-                verdura);
-        produtoRepository.save(produto);
+                Turma turma2 = new Turma();
+                turma2.setAno("2024");
+                turma2.setPeriodo("2024.1");
+                turma2.setProfessor(prof2);
+                turmaRepository.save(turma2);
 
-        produto = new Produto(
-                "banana.png",
-                "Banana",
-                "banana",
-                "1 unidade aprox. 165g",
-                true,
-                350,
-                BigDecimal.valueOf(1.05),
-                LocalDate.of(2023, 2, 22),
-                fruta);
-        produtoRepository.save(produto);
+                Turma turma3 = new Turma();
+                turma3.setAno("2024");
+                turma3.setPeriodo("2024.2");
+                turma3.setProfessor(prof3);
+                turmaRepository.save(turma3);
 
-        produto = new Produto(
-                "beringela.png",
-                "Beringela",
-                "beringela",
-                "1 unidade aprox. 370g",
-                true,
-                720,
-                BigDecimal.valueOf(1.85),
-                LocalDate.of(2023, 2, 23),
-                legume);
-        produtoRepository.save(produto);
+                // Criar inscrições
+                Inscricao inscricao1 = new Inscricao();
+                inscricao1.setDataHora(LocalDateTime.now().minusDays(30));
+                inscricao1.setAluno(aluno1);
+                inscricao1.setTurma(turma1);
+                inscricaoRepository.save(inscricao1);
 
-        produto = new Produto(
-                "brocolis.png",
-                "Brócolis",
-                "brocolis",
-                "1 unidade aprox. 300g",
-                true,
-                600,
-                BigDecimal.valueOf(5.39),
-                LocalDate.of(2023, 3, 28),
-                verdura);
-        produtoRepository.save(produto);
+                Inscricao inscricao2 = new Inscricao();
+                inscricao2.setDataHora(LocalDateTime.now().minusDays(25));
+                inscricao2.setAluno(aluno2);
+                inscricao2.setTurma(turma1);
+                inscricaoRepository.save(inscricao2);
 
-        produto = new Produto(
-                "cebola.png",
-                "Cebola",
-                "cebola",
-                "1 unidade aprox. 200g",
-                true,
-                95,
-                BigDecimal.valueOf(0.56),
-                LocalDate.of(2023, 4, 30),
-                legume);
-        produtoRepository.save(produto);
+                Inscricao inscricao3 = new Inscricao();
+                inscricao3.setDataHora(LocalDateTime.now().minusDays(20));
+                inscricao3.setAluno(aluno1);
+                inscricao3.setTurma(turma2);
+                inscricaoRepository.save(inscricao3);
 
-        produto = new Produto(
-                "cenoura.png",
-                "Cenoura",
-                "cenoura",
-                "1 unidade aprox. 180g",
-                true,
-                350,
-                BigDecimal.valueOf(1.01),
-                LocalDate.of(2023, 5, 29),
-                legume);
-        produtoRepository.save(produto);
+                Inscricao inscricao4 = new Inscricao();
+                inscricao4.setDataHora(LocalDateTime.now().minusDays(15));
+                inscricao4.setAluno(aluno3);
+                inscricao4.setTurma(turma2);
+                inscricaoRepository.save(inscricao4);
 
-        produto = new Produto(
-                "cereja.png",
-                "Cereja",
-                "cereja",
-                "1 unidade aprox. 250g",
-                true,
-                240,
-                BigDecimal.valueOf(11.23),
-                LocalDate.of(2023, 5, 11),
-                fruta);
-        produtoRepository.save(produto);
-    }
+                Inscricao inscricao5 = new Inscricao();
+                inscricao5.setDataHora(LocalDateTime.now().minusDays(10));
+                inscricao5.setAluno(aluno4);
+                inscricao5.setTurma(turma3);
+                inscricaoRepository.save(inscricao5);
+
+                System.out.println("Dados de exemplo criados com sucesso!");
+                System.out.println("- " + professorRepository.count() + " professores");
+                System.out.println("- " + alunoRepository.count() + " alunos");
+                System.out.println("- " + turmaRepository.count() + " turmas");
+                System.out.println("- " + inscricaoRepository.count() + " inscrições");
+        }
 }
