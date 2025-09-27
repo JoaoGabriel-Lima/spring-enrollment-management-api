@@ -36,39 +36,39 @@ public class ApirestfulApplication implements CommandLineRunner {
 
                 // Criar professores
                 Professor prof1 = new Professor();
-                prof1.setNome("Dr. João Silva");
-                prof1.setEmail("joao.silva@uff.br");
+                prof1.setNome("Carlos Alberto Soares Ribeiro");
+                prof1.setEmail("casr@dcc.ic.uff.br");
                 professorRepository.save(prof1);
 
                 Professor prof2 = new Professor();
-                prof2.setNome("Dra. Maria Santos");
-                prof2.setEmail("maria.santos@uff.br");
+                prof2.setNome("Luciana Salgado");
+                prof2.setEmail("luciana.salgado@ic.uff.br");
                 professorRepository.save(prof2);
 
                 Professor prof3 = new Professor();
-                prof3.setNome("Dr. Carlos Oliveira");
-                prof3.setEmail("carlos.oliveira@uff.br");
+                prof3.setNome("Lucia Maria de Assumpcao Drummond");
+                prof3.setEmail("lucia.drummond@ic.uff.br");
                 professorRepository.save(prof3);
 
                 // Criar alunos
                 Aluno aluno1 = new Aluno();
-                aluno1.setNome("Pedro Marinho");
-                aluno1.setEmail("pedro.marinho@id.uff.br");
+                aluno1.setNome("João Gabriel Lima Marinho");
+                aluno1.setEmail("jglimamarinh0@id.uff.br");
                 alunoRepository.save(aluno1);
 
                 Aluno aluno2 = new Aluno();
-                aluno2.setNome("Ana Costa");
-                aluno2.setEmail("ana.costa@id.uff.br");
+                aluno2.setNome("Rafael Amparo");
+                aluno2.setEmail("rvamparo@id.uff.br");
                 alunoRepository.save(aluno2);
 
                 Aluno aluno3 = new Aluno();
-                aluno3.setNome("Lucas Ferreira");
-                aluno3.setEmail("lucas.ferreira@id.uff.br");
+                aluno3.setNome("David Kaio");
+                aluno3.setEmail("davidkssantos@id.uff.br");
                 alunoRepository.save(aluno3);
 
                 Aluno aluno4 = new Aluno();
-                aluno4.setNome("Carla Rodrigues");
-                aluno4.setEmail("carla.rodrigues@id.uff.br");
+                aluno4.setNome("Thales Abranches");
+                aluno4.setEmail("thales.abranches@id.uff.br");
                 alunoRepository.save(aluno4);
 
                 // Criar turmas

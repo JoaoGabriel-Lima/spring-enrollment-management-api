@@ -31,6 +31,7 @@ public class InscricaoService {
     }
 
     public Inscricao cadastrar(Inscricao inscricao) {
+        System.out.println(inscricao);
         // Verificar se o aluno existe
         Aluno aluno = alunoService.buscarPorId(inscricao.getAluno().getId());
 
