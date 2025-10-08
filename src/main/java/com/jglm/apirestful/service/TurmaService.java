@@ -1,6 +1,7 @@
 package com.jglm.apirestful.service;
 
 import com.jglm.apirestful.exception.EntidadeNaoEncontradaException;
+import com.jglm.apirestful.model.Disciplina;
 import com.jglm.apirestful.model.Professor;
 import com.jglm.apirestful.model.Turma;
 import com.jglm.apirestful.repository.TurmaRepository;
@@ -17,13 +18,14 @@ public class TurmaService {
 
     private final TurmaRepository turmaRepository;
     private final ProfessorService professorService;
+    private final DisciplinaService disciplinaService;
 
     public List<Turma> buscarTodos() {
-        return turmaRepository.findAll();
+        return turmaRepository.findAllWithAlunos();
     }
 
     public Turma buscarPorId(Long id) {
-        return turmaRepository.findById(id)
+        return turmaRepository.findByIdWithAlunos(id)
                 .orElseThrow(() -> new EntidadeNaoEncontradaException("Turma não encontrada com ID: " + id));
     }
 
@@ -31,6 +33,10 @@ public class TurmaService {
         // Verificar se o professor existe
         Professor professor = professorService.buscarPorId(turma.getProfessor().getId());
         turma.setProfessor(professor);
+
+        // Verificar se a disciplina existe
+        Disciplina disciplina = disciplinaService.buscarPorId(turma.getDisciplina().getId());
+        turma.setDisciplina(disciplina);
 
         return turmaRepository.save(turma);
     }
@@ -41,6 +47,6 @@ public class TurmaService {
     }
 
     public List<Turma> buscarPorProfessor(Long professorId) {
-        return turmaRepository.findByProfessorId(professorId);
+        return turmaRepository.findByProfessorIdWithAlunos(professorId);
     }
 }

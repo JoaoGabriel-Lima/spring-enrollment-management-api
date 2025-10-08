@@ -6,10 +6,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.jglm.apirestful.model.Aluno;
+import com.jglm.apirestful.model.Disciplina;
 import com.jglm.apirestful.model.Professor;
 import com.jglm.apirestful.model.Turma;
 import com.jglm.apirestful.model.Inscricao;
 import com.jglm.apirestful.repository.AlunoRepository;
+import com.jglm.apirestful.repository.DisciplinaRepository;
 import com.jglm.apirestful.repository.ProfessorRepository;
 import com.jglm.apirestful.repository.TurmaRepository;
 import com.jglm.apirestful.repository.InscricaoRepository;
@@ -24,6 +26,7 @@ public class ApirestfulApplication implements CommandLineRunner {
         private final ProfessorRepository professorRepository;
         private final TurmaRepository turmaRepository;
         private final InscricaoRepository inscricaoRepository;
+        private final DisciplinaRepository disciplinaRepository;
 
         // Construtor comentado removido para usar @RequiredArgsConstructor
 
@@ -33,6 +36,22 @@ public class ApirestfulApplication implements CommandLineRunner {
 
         @Override
         public void run(String... args) throws Exception {
+
+                // Criar disciplinas
+                Disciplina disc1 = new Disciplina();
+                disc1.setNome("Desenvolvimento Web");
+                disc1.setCargaHoraria(60);
+                disciplinaRepository.save(disc1);
+
+                Disciplina disc2 = new Disciplina();
+                disc2.setNome("Interação Humano-Computador");
+                disc2.setCargaHoraria(60);
+                disciplinaRepository.save(disc2);
+
+                Disciplina disc3 = new Disciplina();
+                disc3.setNome("Programação de Computadores II");
+                disc3.setCargaHoraria(80);
+                disciplinaRepository.save(disc3);
 
                 // Criar professores
                 Professor prof1 = new Professor();
@@ -76,18 +95,21 @@ public class ApirestfulApplication implements CommandLineRunner {
                 turma1.setAno("2024");
                 turma1.setPeriodo("2024.1");
                 turma1.setProfessor(prof1);
+                turma1.setDisciplina(disc1);
                 turmaRepository.save(turma1);
 
                 Turma turma2 = new Turma();
                 turma2.setAno("2024");
                 turma2.setPeriodo("2024.1");
                 turma2.setProfessor(prof2);
+                turma2.setDisciplina(disc2);
                 turmaRepository.save(turma2);
 
                 Turma turma3 = new Turma();
                 turma3.setAno("2024");
                 turma3.setPeriodo("2024.2");
                 turma3.setProfessor(prof3);
+                turma3.setDisciplina(disc3);
                 turmaRepository.save(turma3);
 
                 // Criar inscrições
@@ -122,6 +144,7 @@ public class ApirestfulApplication implements CommandLineRunner {
                 inscricaoRepository.save(inscricao5);
 
                 System.out.println("Dados de exemplo criados com sucesso!");
+                System.out.println("- " + disciplinaRepository.count() + " disciplinas");
                 System.out.println("- " + professorRepository.count() + " professores");
                 System.out.println("- " + alunoRepository.count() + " alunos");
                 System.out.println("- " + turmaRepository.count() + " turmas");
