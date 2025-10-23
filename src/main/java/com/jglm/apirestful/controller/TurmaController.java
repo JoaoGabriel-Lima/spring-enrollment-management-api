@@ -1,5 +1,6 @@
 package com.jglm.apirestful.controller;
 
+import com.jglm.apirestful.model.ResultadoPaginado;
 import com.jglm.apirestful.model.Turma;
 import com.jglm.apirestful.service.TurmaService;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,23 @@ public class TurmaController {
     public ResponseEntity<List<Turma>> buscarTodos() {
         List<Turma> turmas = turmaService.buscarTodos();
         return ResponseEntity.ok(turmas);
+    }
+
+    @GetMapping("/buscar")
+    public ResponseEntity<ResultadoPaginado<Turma>> buscarTurmasPaginado(
+            @RequestParam(required = false) String search,
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(name = "per_page", defaultValue = "10") int perPage) {
+
+        if (page < 1) {
+            page = 1;
+        }
+        if (perPage < 1) {
+            perPage = 10;
+        }
+
+        ResultadoPaginado<Turma> resultado = turmaService.buscarTurmasPaginado(search, page, perPage);
+        return ResponseEntity.ok(resultado);
     }
 
     @GetMapping("/{id}")
