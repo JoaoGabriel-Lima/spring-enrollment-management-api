@@ -1,6 +1,7 @@
 package com.jglm.apirestful.service;
 
 import com.jglm.apirestful.exception.EntidadeNaoEncontradaException;
+import com.jglm.apirestful.model.Aluno;
 import com.jglm.apirestful.model.Disciplina;
 import com.jglm.apirestful.model.Professor;
 import com.jglm.apirestful.model.ResultadoPaginado;
@@ -69,5 +70,16 @@ public class TurmaService {
 
     public List<Turma> buscarPorProfessor(Long professorId) {
         return turmaRepository.findByProfessorIdWithAlunos(professorId);
+    }
+
+    public List<Turma> buscarPorDisciplina(Long disciplinaId) {
+        return turmaRepository.findByDisciplinaIdWithAlunos(disciplinaId);
+    }
+
+    public List<Aluno> buscarAlunosPorTurma(Long turmaId) {
+        Turma turma = buscarPorId(turmaId);
+        return turma.getInscricoes().stream()
+                .map(inscricao -> inscricao.getAluno())
+                .toList();
     }
 }

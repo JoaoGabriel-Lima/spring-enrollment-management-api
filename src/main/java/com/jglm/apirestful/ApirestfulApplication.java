@@ -178,6 +178,13 @@ public class ApirestfulApplication implements CommandLineRunner {
                 turma1.setDisciplina(disc1);
                 turmaRepository.save(turma1);
 
+                Turma turma12 = new Turma();
+                turma12.setAno("2024");
+                turma12.setPeriodo("2024.1");
+                turma12.setProfessor(prof1);
+                turma12.setDisciplina(disc1);
+                turmaRepository.save(turma12);
+
                 Turma turma2 = new Turma();
                 turma2.setAno("2024");
                 turma2.setPeriodo("2024.1");
@@ -226,6 +233,128 @@ public class ApirestfulApplication implements CommandLineRunner {
                 turma8.setProfessor(prof8);
                 turma8.setDisciplina(disc8);
                 turmaRepository.save(turma8);
+
+                // Adicionando mais 2 turmas para cada disciplina
+
+                // Disciplina 1
+                Turma turma1_2 = new Turma();
+                turma1_2.setAno("2025");
+                turma1_2.setPeriodo("2025.2");
+                turma1_2.setProfessor(prof2);
+                turma1_2.setDisciplina(disc1);
+                turmaRepository.save(turma1_2);
+
+                Turma turma1_3 = new Turma();
+                turma1_3.setAno("2026");
+                turma1_3.setPeriodo("2026.1");
+                turma1_3.setProfessor(prof3);
+                turma1_3.setDisciplina(disc1);
+                turmaRepository.save(turma1_3);
+
+                // Disciplina 2
+                Turma turma2_2 = new Turma();
+                turma2_2.setAno("2025");
+                turma2_2.setPeriodo("2025.2");
+                turma2_2.setProfessor(prof3);
+                turma2_2.setDisciplina(disc2);
+                turmaRepository.save(turma2_2);
+
+                Turma turma2_3 = new Turma();
+                turma2_3.setAno("2026");
+                turma2_3.setPeriodo("2026.1");
+                turma2_3.setProfessor(prof4);
+                turma2_3.setDisciplina(disc2);
+                turmaRepository.save(turma2_3);
+
+                // Disciplina 3
+                Turma turma3_2 = new Turma();
+                turma3_2.setAno("2025");
+                turma3_2.setPeriodo("2025.2");
+                turma3_2.setProfessor(prof4);
+                turma3_2.setDisciplina(disc3);
+                turmaRepository.save(turma3_2);
+
+                Turma turma3_3 = new Turma();
+                turma3_3.setAno("2026");
+                turma3_3.setPeriodo("2026.1");
+                turma3_3.setProfessor(prof5);
+                turma3_3.setDisciplina(disc3);
+                turmaRepository.save(turma3_3);
+
+                // Disciplina 4
+                Turma turma4_2 = new Turma();
+                turma4_2.setAno("2025");
+                turma4_2.setPeriodo("2025.2");
+                turma4_2.setProfessor(prof5);
+                turma4_2.setDisciplina(disc4);
+                turmaRepository.save(turma4_2);
+
+                Turma turma4_3 = new Turma();
+                turma4_3.setAno("2026");
+                turma4_3.setPeriodo("2026.1");
+                turma4_3.setProfessor(prof6);
+                turma4_3.setDisciplina(disc4);
+                turmaRepository.save(turma4_3);
+
+                // Disciplina 5
+                Turma turma5_2 = new Turma();
+                turma5_2.setAno("2025");
+                turma5_2.setPeriodo("2025.2");
+                turma5_2.setProfessor(prof6);
+                turma5_2.setDisciplina(disc5);
+                turmaRepository.save(turma5_2);
+
+                Turma turma5_3 = new Turma();
+                turma5_3.setAno("2026");
+                turma5_3.setPeriodo("2026.1");
+                turma5_3.setProfessor(prof7);
+                turma5_3.setDisciplina(disc5);
+                turmaRepository.save(turma5_3);
+
+                // Disciplina 6
+                Turma turma6_2 = new Turma();
+                turma6_2.setAno("2025");
+                turma6_2.setPeriodo("2025.2");
+                turma6_2.setProfessor(prof7);
+                turma6_2.setDisciplina(disc6);
+                turmaRepository.save(turma6_2);
+
+                Turma turma6_3 = new Turma();
+                turma6_3.setAno("2026");
+                turma6_3.setPeriodo("2026.1");
+                turma6_3.setProfessor(prof8);
+                turma6_3.setDisciplina(disc6);
+                turmaRepository.save(turma6_3);
+
+                // Disciplina 7
+                Turma turma7_2 = new Turma();
+                turma7_2.setAno("2025");
+                turma7_2.setPeriodo("2025.2");
+                turma7_2.setProfessor(prof8);
+                turma7_2.setDisciplina(disc7);
+                turmaRepository.save(turma7_2);
+
+                Turma turma7_3 = new Turma();
+                turma7_3.setAno("2026");
+                turma7_3.setPeriodo("2026.1");
+                turma7_3.setProfessor(prof1);
+                turma7_3.setDisciplina(disc7);
+                turmaRepository.save(turma7_3);
+
+                // Disciplina 8
+                Turma turma8_2 = new Turma();
+                turma8_2.setAno("2025");
+                turma8_2.setPeriodo("2025.2");
+                turma8_2.setProfessor(prof1);
+                turma8_2.setDisciplina(disc8);
+                turmaRepository.save(turma8_2);
+
+                Turma turma8_3 = new Turma();
+                turma8_3.setAno("2026");
+                turma8_3.setPeriodo("2026.1");
+                turma8_3.setProfessor(prof2);
+                turma8_3.setDisciplina(disc8);
+                turmaRepository.save(turma8_3);
 
                 // Criar inscrições
                 Inscricao inscricao1 = new Inscricao();

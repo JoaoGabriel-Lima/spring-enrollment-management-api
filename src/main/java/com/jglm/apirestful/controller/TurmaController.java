@@ -1,5 +1,6 @@
 package com.jglm.apirestful.controller;
 
+import com.jglm.apirestful.model.Aluno;
 import com.jglm.apirestful.model.ResultadoPaginado;
 import com.jglm.apirestful.model.Turma;
 import com.jglm.apirestful.service.TurmaService;
@@ -63,5 +64,17 @@ public class TurmaController {
     public ResponseEntity<List<Turma>> buscarPorProfessor(@PathVariable Long professorId) {
         List<Turma> turmas = turmaService.buscarPorProfessor(professorId);
         return ResponseEntity.ok(turmas);
+    }
+
+    @GetMapping("/disciplina/{disciplinaId}")
+    public ResponseEntity<List<Turma>> buscarPorDisciplina(@PathVariable Long disciplinaId) {
+        List<Turma> turmas = turmaService.buscarPorDisciplina(disciplinaId);
+        return ResponseEntity.ok(turmas);
+    }
+
+    @GetMapping("/{id}/alunos")
+    public ResponseEntity<List<Aluno>> buscarAlunosPorTurma(@PathVariable Long id) {
+        List<Aluno> alunos = turmaService.buscarAlunosPorTurma(id);
+        return ResponseEntity.ok(alunos);
     }
 }
