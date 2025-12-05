@@ -1,6 +1,8 @@
 package com.jglm.apirestful.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -19,9 +21,12 @@ public class Professor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Nome é obrigatório")
     @Column(nullable = false)
     private String nome;
 
+    @NotBlank(message = "Email é obrigatório")
+    @Email(message = "Email inválido")
     @Column(nullable = false, unique = true)
     private String email;
 

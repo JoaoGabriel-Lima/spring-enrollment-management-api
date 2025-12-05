@@ -2,6 +2,7 @@ package com.jglm.apirestful.controller;
 
 import com.jglm.apirestful.model.Disciplina;
 import com.jglm.apirestful.service.DisciplinaService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,13 +31,13 @@ public class DisciplinaController {
     }
 
     @PostMapping
-    public ResponseEntity<Disciplina> cadastrar(@RequestBody Disciplina disciplina) {
+    public ResponseEntity<Disciplina> cadastrar(@Valid @RequestBody Disciplina disciplina) {
         Disciplina disciplinaSalva = disciplinaService.cadastrar(disciplina);
         return ResponseEntity.status(HttpStatus.CREATED).body(disciplinaSalva);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Disciplina> alterar(@PathVariable Long id, @RequestBody Disciplina disciplina) {
+    public ResponseEntity<Disciplina> alterar(@PathVariable Long id, @Valid @RequestBody Disciplina disciplina) {
         Disciplina disciplinaAlterada = disciplinaService.alterar(id, disciplina);
         return ResponseEntity.ok(disciplinaAlterada);
     }

@@ -1,6 +1,8 @@
 package com.jglm.apirestful.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -22,16 +24,20 @@ public class Turma {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Ano é obrigatório")
     @Column(nullable = false)
     private String ano;
 
+    @NotBlank(message = "Período é obrigatório")
     @Column(nullable = false)
     private String periodo;
 
+    @NotNull(message = "Professor é obrigatório")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "professor_id", nullable = false)
     private Professor professor;
 
+    @NotNull(message = "Disciplina é obrigatória")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "disciplina_id", nullable = false)
     private Disciplina disciplina;

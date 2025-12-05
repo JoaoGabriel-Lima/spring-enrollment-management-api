@@ -2,6 +2,7 @@ package com.jglm.apirestful.controller;
 
 import com.jglm.apirestful.model.Inscricao;
 import com.jglm.apirestful.service.InscricaoService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ public class InscricaoController {
     }
 
     @PostMapping
-    public ResponseEntity<Inscricao> cadastrar(@RequestBody Inscricao inscricao) {
+    public ResponseEntity<Inscricao> cadastrar(@Valid @RequestBody Inscricao inscricao) {
         Inscricao inscricaoSalva = inscricaoService.cadastrar(inscricao);
         return ResponseEntity.status(HttpStatus.CREATED).body(inscricaoSalva);
     }

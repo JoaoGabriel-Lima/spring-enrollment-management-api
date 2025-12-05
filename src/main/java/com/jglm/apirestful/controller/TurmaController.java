@@ -4,6 +4,7 @@ import com.jglm.apirestful.model.Aluno;
 import com.jglm.apirestful.model.ResultadoPaginado;
 import com.jglm.apirestful.model.Turma;
 import com.jglm.apirestful.service.TurmaService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,7 +50,7 @@ public class TurmaController {
     }
 
     @PostMapping
-    public ResponseEntity<Turma> cadastrar(@RequestBody Turma turma) {
+    public ResponseEntity<Turma> cadastrar(@Valid @RequestBody Turma turma) {
         Turma turmaSalva = turmaService.cadastrar(turma);
         return ResponseEntity.status(HttpStatus.CREATED).body(turmaSalva);
     }

@@ -2,6 +2,7 @@ package com.jglm.apirestful.controller;
 
 import com.jglm.apirestful.model.Professor;
 import com.jglm.apirestful.service.ProfessorService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,13 +31,13 @@ public class ProfessorController {
     }
 
     @PostMapping
-    public ResponseEntity<Professor> cadastrar(@RequestBody Professor professor) {
+    public ResponseEntity<Professor> cadastrar(@Valid @RequestBody Professor professor) {
         Professor professorSalvo = professorService.cadastrar(professor);
         return ResponseEntity.status(HttpStatus.CREATED).body(professorSalvo);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Professor> alterar(@PathVariable Long id, @RequestBody Professor professor) {
+    public ResponseEntity<Professor> alterar(@PathVariable Long id, @Valid @RequestBody Professor professor) {
         Professor professorAlterado = professorService.alterar(id, professor);
         return ResponseEntity.ok(professorAlterado);
     }
