@@ -17,4 +17,6 @@ public interface InscricaoRepository extends JpaRepository<Inscricao, Long> {
     Optional<Inscricao> findByAlunoIdAndTurmaId(Long alunoId, Long turmaId);
 
     boolean existsByAlunoIdAndTurmaId(Long alunoId, Long turmaId);
+
+    boolean existsByAlunoId(Long alunoId);
 }

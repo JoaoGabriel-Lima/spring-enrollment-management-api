@@ -15,6 +15,10 @@ import com.jglm.apirestful.repository.DisciplinaRepository;
 import com.jglm.apirestful.repository.ProfessorRepository;
 import com.jglm.apirestful.repository.TurmaRepository;
 import com.jglm.apirestful.repository.InscricaoRepository;
+import com.jglm.apirestful.auth.model.Usuario;
+import com.jglm.apirestful.auth.repository.UsuarioRepository;
+import com.jglm.apirestful.auth.util.Role;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDateTime;
 
@@ -27,6 +31,8 @@ public class ApirestfulApplication implements CommandLineRunner {
         private final TurmaRepository turmaRepository;
         private final InscricaoRepository inscricaoRepository;
         private final DisciplinaRepository disciplinaRepository;
+        private final UsuarioRepository usuarioRepository;
+        private final PasswordEncoder passwordEncoder;
 
         // Construtor comentado removido para usar @RequiredArgsConstructor
 
@@ -482,11 +488,20 @@ public class ApirestfulApplication implements CommandLineRunner {
                 inscricao20.setTurma(turma8);
                 inscricaoRepository.save(inscricao20);
 
+                // Criar usuário Rafael Amparo
+                Usuario usuario1 = new Usuario();
+                usuario1.setNome("Rafael Amparo");
+                usuario1.setEmail("rvamparo@gmail.com");
+                usuario1.setSenha(passwordEncoder.encode("password"));
+                usuario1.setRole(Role.ADMIN);
+                usuarioRepository.save(usuario1);
+
                 System.out.println("Dados de exemplo criados com sucesso!");
                 System.out.println("- " + disciplinaRepository.count() + " disciplinas");
                 System.out.println("- " + professorRepository.count() + " professores");
                 System.out.println("- " + alunoRepository.count() + " alunos");
                 System.out.println("- " + turmaRepository.count() + " turmas");
                 System.out.println("- " + inscricaoRepository.count() + " inscrições");
+                System.out.println("- " + usuarioRepository.count() + " usuários");
         }
 }

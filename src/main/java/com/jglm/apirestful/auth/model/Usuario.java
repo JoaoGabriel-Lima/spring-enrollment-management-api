@@ -4,6 +4,7 @@ import com.jglm.apirestful.auth.util.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,6 +29,7 @@ public class Usuario {
     private String email;
 
     @NotEmpty(message = "A 'Senha' deve ser informada.")
+    @Size(min = 6, message = "A 'Senha' deve ter no mínimo 6 caracteres.")
     private String senha;
 
     @Enumerated(EnumType.STRING)

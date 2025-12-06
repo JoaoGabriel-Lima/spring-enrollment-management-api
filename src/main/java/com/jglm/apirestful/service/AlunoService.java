@@ -3,6 +3,7 @@ package com.jglm.apirestful.service;
 import com.jglm.apirestful.exception.EntidadeNaoEncontradaException;
 import com.jglm.apirestful.model.Aluno;
 import com.jglm.apirestful.repository.AlunoRepository;
+import com.jglm.apirestful.repository.InscricaoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +16,7 @@ import java.util.List;
 public class AlunoService {
 
     private final AlunoRepository alunoRepository;
+    private final InscricaoRepository inscricaoRepository;
 
     public List<Aluno> buscarTodos() {
         return alunoRepository.findAll();
@@ -49,6 +51,10 @@ public class AlunoService {
 
     public void remover(Long id) {
         Aluno aluno = buscarPorId(id);
+        if (inscricaoRepository.existsByAlunoId(id)) {
+            throw new IllegalArgumentException(
+                    "Não é possível remover o aluno pois ele está matriculado em uma ou mais turmas.");
+        }
         alunoRepository.delete(aluno);
     }
 }
